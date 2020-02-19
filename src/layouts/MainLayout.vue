@@ -15,7 +15,7 @@
           <div class="text-h3">Todo</div>
           <div class="text-subtitle1">Monday 4 November</div>
           </div>
-          <q-img src="statics/volcanoes.jpg" class="header-image " />
+          <q-img src="statics/volcanoes.jpg" class="header-image absolute-top" />
     </q-header>
 
     <q-drawer
