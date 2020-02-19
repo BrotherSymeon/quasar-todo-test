@@ -1,9 +1,10 @@
 <template>
   <q-page class="bg-grey-4 column">
   <q-list 
-  seperator
-  bordered
-  class="bg-white">
+    class="bg-white"
+    seperator
+    bordered
+  >
       <q-item
       v-for="task in tasks" 
       key="task.title"
