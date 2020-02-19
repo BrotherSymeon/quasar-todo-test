@@ -1,8 +1,12 @@
 <template>
   <q-page class="bg-grey-4 column">
-  <q-list class="bg-white">
+  <q-list 
+  seperator
+  bordered
+  class="bg-white">
       <q-item
       v-for="task in tasks" 
+      key="task.title"
       v-ripple>
         <q-item-section avatar>
           <q-checkbox 
