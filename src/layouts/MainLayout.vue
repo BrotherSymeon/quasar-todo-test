@@ -13,35 +13,70 @@
       </q-toolbar>
       <div class="q-px-lg q-pt-xl q-mb-md">
           <div class="text-h3">Todo</div>
-          <div class="text-subtitle1">Monday 4 November</div>
+          <div class="text-subtitle1">{{ todaysDate }}</div>
           </div>
-          <q-img src="statics/volcanoes.jpg" class="header-image absolute-top" />
+          <q-img src="statics/forest-monastery.jpg" class="header-image absolute-top" />
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      content-class="bg-grey-1"
-    >
-      <q-list>
-        <q-item-label header class="text-grey-8">Essential Links</q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
+   <q-drawer
+        v-model="leftDrawerOpen"
+        show-if-above
+        :width="200"
+        :breakpoint="400"
+      >
+        <q-scroll-area style="height: calc(100% - 192px); margin-top: 192px; border-right: 1px solid #ddd">
+          <q-list padding>
+            <q-item 
+            to="/"
+            clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="list" />
+              </q-item-section>
+
+              <q-item-section>
+                Todo
+              </q-item-section>
+            </q-item>
+
+             <q-item 
+             to="/help"
+             clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="help" />
+              </q-item-section>
+
+              <q-item-section>
+                Help
+              </q-item-section>
+            </q-item>
+            
+          </q-list>
+        </q-scroll-area>
+
+        <q-img class="absolute-top" src="statics/forest-monastery.jpg" style="height: 192px">
+          <div class="absolute-bottom bg-transparent">
+            <q-avatar size="56px" class="q-mb-sm">
+              <img src="https://lh3.googleusercontent.com/-UHt9earrJ4U/AAAAAAAAAAI/AAAAAAAAAAA/AKF05nCqU0Z7AqAsf_kOXqJkQk9IfweKRQ/photo.jpg?sz=46">
+            </q-avatar>
+            <div class="text-weight-bold">Father Innocent</div>
+            <div>@stjohns.com</div>
+          </div>
+        </q-img>
+      </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <keep-alive>
+        <router-view />
+      </keep-alive>
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
 import EssentialLink from 'components/EssentialLink'
+import { date } from 'quasar'
+
+
 
 export default {
   name: 'MainLayout',
@@ -49,7 +84,12 @@ export default {
   components: {
     EssentialLink
   },
-
+  computed:{
+    todaysDate(){
+      let timeStamp = Date.now()
+      return date.formatDate(timeStamp, 'dddd d MMMM')
+    }
+  },
   data () {
     return {
       leftDrawerOpen: false,
