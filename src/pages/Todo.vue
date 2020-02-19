@@ -9,7 +9,7 @@
       v-for="task in tasks" 
       @click="task.done = !task.done"
       clickable
-      :class="{'done': task.done}"
+      :class="{'done bg-blue-1': task.done}"
       key="task.title"
       v-ripple>
         <q-item-section avatar>
@@ -20,6 +20,11 @@
         </q-item-section>
         <q-item-section>
           <q-item-label>{{task.title}}</q-item-label>
+        </q-item-section>
+         <q-item-section
+         v-if="task.done"
+         side>
+          x
         </q-item-section>
       </q-item>
 
@@ -45,6 +50,7 @@ export default {
 .done{
 .q-item__label{
   text-decoration:line-through;
+  color: #bbb
 }
 }
 
