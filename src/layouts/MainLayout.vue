@@ -89,7 +89,7 @@ export default {
   computed:{
     todaysDate(){
       let timeStamp = Date.now()
-      return date.formatDate(timeStamp, 'dddd d MMMM')
+      return date.formatDate(timeStamp, 'dddd D MMMM')
     }
   },
   data () {
